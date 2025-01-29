@@ -1,0 +1,162 @@
+﻿@model WebStokYApp.Models.ViewsModel.CartAndOrdersViewModel
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+<div class="container mt-5">
+    <h3 class="text-center mb-4">My Cart</h3>
+
+    <!-- Cart Items -->
+    @if (Model.CartItems != null && Model.CartItems.Any())
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CartItems)
+                {
+                    <tr>
+                        <td>@item.Product.ProductName</td>
+                        <td>@item.Product.Price</td>
+                        <td>@item.Quantity</td>
+                        <td>@(item.Quantity * item.Product.Price)</td>
+                        <td>
+                            @if (item.Quantity > 1)
+                            {
+                                <form method="post" action="/Cart/RemoveFromCart">
+                                    <input type="hidden" name="cartId" value="@item.Id" />
+                                    <button type="submit" class="btn btn-warning btn-sm">Reduce Quantity</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <form method="post" action="/Cart/RemoveFromCart">
+                                    <input type="hidden" name="cartId" value="@item.Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="text-right mt-4">
+            <form method="post" action="/Cart/CreateOrder">
+                <button type="submit" class="btn btn-success">Proceed to Checkout</button>
+            </form>
+        </div>
+
+        <div class="text-right">
+            <h5>
+                Total Amount:
+                @Model.CartItems.Sum(c => c.Quantity * c.Product.Price)
+            </h5>
+        </div>
+    }
+    else
+    {
+        <p class="text-center text-muted">Your cart is empty.</p>
+    }
+
+    <!-- Pending Orders -->
+    @if (Model.PendingOrders != null && Model.PendingOrders.Any())
+    {
+        <h4 class="mt-5">Pending Orders</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Order Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model.PendingOrders)
+                {
+                    <tr>
+                        <td>@order.Product.ProductName</td>
+                        <td>@order.Product.Price</td>
+                        <td>@order.Quantity</td>
+                        <td>@(order.Quantity * order.Product.Price)</td>
+                        <td>@order.OrderStatus</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <!-- Approved Orders -->
+    @if (Model.ApprovedOrders != null && Model.ApprovedOrders.Any())
+    {
+        <h4 class="mt-5">Approved Orders</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Order Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model.ApprovedOrders)
+                {
+                    <tr>
+                        <td>@order.Product.ProductName</td>
+                        <td>@order.Product.Price</td>
+                        <td>@order.Quantity</td>
+                        <td>@(order.Quantity * order.Product.Price)</td>
+                        <td>@order.OrderStatus</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <!-- REjected Orders -->
+    @if (Model.RejectedOrders != null && Model.RejectedOrders.Any())
+    {
+        <h4 class="mt-5">Rejected Orders</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Order Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model.RejectedOrders)
+                {
+                    <tr>
+                        <td>@order.Product.ProductName</td>
+                        <td>@order.Product.Price</td>
+                        <td>@order.Quantity</td>
+                        <td>@(order.Quantity * order.Product.Price)</td>
+                        <td>@order.OrderStatus</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

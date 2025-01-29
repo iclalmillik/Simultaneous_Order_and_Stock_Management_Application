@@ -1,0 +1,119 @@
+﻿@model IEnumerable<WebStokYApp.Models.Entities.Log>
+
+@{
+    ViewData["Title"] = "Log Panel";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Log Panel</h1>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="get" class="row g-3">
+                <div class="col-md-2">
+                    <label for="logType" class="form-label">Log type</label>
+                    <select name="logType" id="logType" class="form-select">
+                        <option value="">Tümü</option>
+                        <option value="Information">Information</option>
+                        <option value="Warning">Warning</option>
+                        <option value="Error">Error</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label for="customerType" class="form-label">Customer Type</label>
+                    <select name="customerType" id="customerType" class="form-select">
+                        <option value="">All</option>
+                        <option value="Premium">Premium</option>
+                        <option value="Normal">Normal</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="search" class="form-label">Search</label>
+                    <input type="text" name="search" id="search" class="form-control" placeholder="Search in log details...">
+                </div>
+                <div class="col-md-2">
+                    <label for="startDate" class="form-label">Start date</label>
+                    <input type="date" name="startDate" id="startDate" class="form-control">
+                </div>
+                <div class="col-md-2">
+                    <label for="endDate" class="form-label">End Tarihi</label>
+                    <input type="date" name="endDate" id="endDate" class="form-control">
+                </div>
+                <div class="col-md-1 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100">Filter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Log ID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Customer Type</th>
+                    <th scope="col">Log Type</th>
+                    <th scope="col">Log Details</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.Where(log => log.LogDetails == null || !log.LogDetails.Contains("Admin")).Any())
+                {
+                    <tr>
+                        <td colspan="6" class="text-center">No logs found.</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var log in Model.Where(log => log.LogDetails == null || !log.LogDetails.Contains("Admin")))
+                    {
+                        <tr>
+                            <td>@log.LogID</td>
+                            <td>@log.Customer?.CustomerName </td>
+                            <td>@log.Customer?.CustomerType </td>
+                            <td>@log.LogType</td>
+                            <td>@log.LogDetails</td>
+                            <td>@log.LogDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Log ID</th>
+                <th scope="col">Log Type</th>
+                <th scope="col">Log Detail</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Any(log => log.LogDetails.Contains("Admin")))
+            {
+                <tr>
+                        <td colspan="4" class="text-center">No logs found.</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var log in Model.Where(log => log.LogDetails.Contains("Admin")))
+                {
+                    <tr>
+                        <td>@log.LogID</td>
+                        <td>@log.LogType</td>
+                        <td>@log.LogDetails</td>
+                        <td>@log.LogDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+</div>

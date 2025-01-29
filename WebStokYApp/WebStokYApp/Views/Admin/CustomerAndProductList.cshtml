@@ -1,0 +1,169 @@
+﻿@model Tuple<IEnumerable<WebStokYApp.Models.Entities.Customer>, IEnumerable<WebStokYApp.Models.Entities.Product>>
+
+
+@{
+
+}
+
+
+
+<!-- Bekleyen Siparişler Butonu -->
+<div class="container">
+    <div class="text-right">
+        <a href="/Admin/ApproveOrder" class="btn btn-warning mb-3">
+            Pending Orders
+        </a>
+    </div>
+</div>
+<!-- DashBoard Butonu -->
+<div class="container">
+    <div class="text-right">
+        <a href="/Admin/StockDashBoard" class="btn btn-warning mb-3">
+           Graphic DashBoard 
+        </a>
+    </div>
+</div>
+
+<!-- DashBoard Butonu -->
+<div class="container">
+    <div class="text-right">
+        <a href="/Admin/OrderStatusDashboard" class="btn btn-warning mb-3">
+           Order Status DashBoard
+        </a>
+    </div>
+</div>
+<!-- Bekleyen Siparişler Butonu -->
+<div class="container">
+    <div class="text-right">
+        <a href="/Log/LogPanel" class="btn btn-warning mb-3">
+         Log Panel
+        </a>
+    </div>
+</div>
+
+<h2 class="text-center">Customer and Product List</h2>
+
+<div class="table-container">
+    <!-- Customer List -->
+    <h3>Customer List</h3>
+    @if (Model.Item1 == null || !Model.Item1.Any())
+    {
+        <p class="text-center">No customers found.</p>
+    }
+    else
+    {
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Customer Name</th>
+                    <th>Budget</th>
+                    <th>Customer Type</th>
+                    <th>Total Spent</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model.Item1)
+                {
+                    <tr>
+                        <td>@customer.CustomerID</td>
+                        <td>@customer.CustomerName</td>
+                        <td>@customer.Budget</td>
+                        <td>@customer.CustomerType</td>
+                        <td>@customer.TotalSpent</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <!-- Product List -->
+    <h3>Product List</h3>
+    @if (Model.Item2 == null || !Model.Item2.Any())
+    {
+        <p class="text-center">No products found.</p>
+    }
+    else
+    {
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Stock</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model.Item2)
+                {
+                    <tr>
+                        <td>@product.ProductID</td>
+                        <td>@product.ProductName</td>
+                        <td>@product.Stock</td>
+                        <td>@product.Price</td>
+                    </tr>
+                <td>
+                    <form asp-action="DeleteProduct" method="post" style="display:inline;">
+                        <input type="hidden" name="productId" value="@product.ProductID" />
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+
+                    <form asp-action="UpdateStock" method="post" style="display:inline;">
+                        <input type="hidden" name="productId" value="@product.ProductID" />
+                        <input type="number" name="stockChange" placeholder="Stock Change" required />
+                        <button class="btn btn-primary" type="submit">Update Stock</button>
+                    </form>
+                </td>
+                }
+            </tbody>
+        </table>
+        <a asp-action="AddProduct" class="btn btn-success">Add New Product</a>
+    }
+</div>
+
+<style>
+    .table-container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px 0;
+    }
+
+    .table {
+        font-size: 14px;
+    }
+
+    .table-bordered th, .table-bordered td {
+        border: 1px solid #ddd;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    .table-sm td, .table-sm th {
+        padding: 0.5rem;
+    }
+
+
+    /* Tüm butonları kapsayan stil */
+    .btn-custom {
+        background-color: #4CAF50; /* Yeşil renk */
+        color: white; /* Beyaz yazı */
+        border: none; /* Kenarlıkları kaldır */
+        padding: 10px 20px; /* İç boşluk */
+        font-size: 16px; /* Yazı boyutu */
+        cursor: pointer; /* İmleç değişimi */
+        border-radius: 5px; /* Yuvarlatılmış köşeler */
+    }
+
+        .btn-custom:hover {
+            background-color: #45a049; /* Hover (üstüne gelince) rengi */
+        }
+
+    /* Konumlandırmayı sola almak için */
+    .text-left {
+        text-align: left; /* Sağdan sola hizalama */
+    }
+</style>
+

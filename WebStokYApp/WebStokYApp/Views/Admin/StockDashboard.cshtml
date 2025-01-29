@@ -1,0 +1,84 @@
+﻿@using System.Text.Json
+
+@{
+    var productNames = ViewData["ProductNames"] as string[];
+    var productStocks = ViewData["ProductStocks"] as int[];
+    var criticalStocks = ViewData["CriticalStocks"] as IEnumerable<dynamic>;
+}
+
+<h2>Stock Dashboard</h2>
+
+<!-- Bar Grafiği -->
+<canvas id="barChart" width="400" height="200"></canvas>
+
+<!-- Dairesel Grafiği --
+<canvas id="pieChart" width="400" height="200"></canvas>
+
+<!-- Kritik Stoklar Listesi -->
+<h3>Critical Stock Levels</h3>
+@if (criticalStocks != null && criticalStocks.Any())
+{
+    <ul>
+        @foreach (var item in criticalStocks)
+        {
+            <li style="color: red;">@item.ProductName - Stock: @item.Stock</li>
+        }
+    </ul>
+}
+else
+{
+    <p>All products are above the critical stock level.</p>
+}
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script>
+    // Bar Chart
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    const barChart = new Chart(barCtx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Json.Serialize(productNames)),
+            datasets: [{
+                label: 'Stock Levels',
+                data: @Html.Raw(Json.Serialize(productStocks)),
+                backgroundColor: @Html.Raw(Json.Serialize(productStocks.Select(s => s <= 10 ? "red" : "blue"))),
+                borderColor: "black",
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Pie Chart
+    const pieCtx = document.getElementById('pieChart').getContext('2d');
+    const pieChart = new Chart(pieCtx, {
+        type: 'pie',
+        data: {
+            labels: @Html.Raw(Json.Serialize(productNames)),
+            datasets: [{
+                data: @Html.Raw(Json.Serialize(productStocks)),
+                backgroundColor: @Html.Raw(Json.Serialize(productStocks.Select(s => s <= 10 ? "red" : "green"))),
+
+                borderColor: 'black',
+                borderWidth: 1
+            }]
+        }
+    });
+
+
+
+</script>
+
+
+
+

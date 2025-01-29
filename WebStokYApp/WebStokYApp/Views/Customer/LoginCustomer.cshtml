@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebStokYApp.Models.Entities.Product>
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top">
+    <div class="container">
+        <!-- Logo veya Başlık -->
+        <a class="navbar-brand" href="/">LOGOUT</a>
+
+        <!-- Sağ Taraf Butonu -->
+        <div class="d-flex">
+            <a href="/Cart/AddToCart" class="btn btn-outline-primary">
+                <i class="bi bi-cart"></i> My Cart
+                <span class="badge bg-danger">1</span> <!-- Örnek sepet sayısı -->
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Ana içerik ile navbar arasında boşluk bırak -->
+<div style="margin-top: 80px;"></div>
+
+<div class="container mt-5">
+    <p class="h4 text-center mb-4">WELCOME, @ViewData["CustomerName"]</p>
+    <h5 class="text-center text-primary mb-4">Products</h5>
+    <div class="row justify-content-center">
+        @if (ViewData["Products"] is List<WebStokYApp.Models.Entities.Product> products && products.Any())
+        {
+            foreach (var product in products)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-5 d-flex align-items-stretch">
+                    <div class="card shadow-lg" style="width: 100%; max-width: 350px; min-height: 250px;">
+                        <div class="card-body">
+                            <h4 class="card-title text-center">@product.ProductName</h4>
+                            <p class="card-text text-center"><strong>Stock:</strong> @product.Stock</p>
+                            <p class="card-text text-center"><strong>Price:</strong> @product.Price</p>
+
+                            <!-- Sepete ekleme butonu -->
+                            <div class="d-flex justify-content-center">
+                                <form method="post" action="/Cart/AddToCart">
+                                    <input type="hidden" name="productId" value="@product.ProductID" />
+                                    <button type="submit" class="btn btn-outline-primary">
+                                        <i class="bi bi-cart"></i> Add to Cart
+                                    </button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <p class="text-center text-muted">No products available to display.</p>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,161 @@
+﻿@model WebStokYApp.Models.ViewsModel.OrdersViewModel
+@{
+    var successMessage = TempData["SuccessMessage"] as string;
+    if (!string.IsNullOrEmpty(successMessage))
+    {
+        <div class="alert alert-success">
+            @successMessage
+        </div>
+    }
+}
+
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Orders</h3>
+
+    <h4>Pending Orders</h4>
+    @if (Model.PendingOrders != null && Model.PendingOrders.Any())
+    {
+        <form method="post" action="/Admin/ApproveOrder">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th>Order Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.PendingOrders)
+                    {
+                        <tr>
+                            <td>@order.Customer.CustomerName</td>
+                            <td>@order.Product.ProductName</td>
+                            <td>@order.Quantity</td>
+                            <td>@order.TotalPrice</td>
+                            <td>@order.OrderDate?.ToString("yyyy-MM-dd HH:mm")</td>
+                            <td>@order.OrderStatus</td>
+                            <td>
+                                <input type="hidden" name="orderIds" value="@order.OrderID" />
+                                <form method="post" action="/Admin/CancelOrder" style="display:inline;">
+                                    <input type="hidden" name="orderId" value="@order.OrderID" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <button type="submit" class="btn btn-success btn-sm">Approve All</button>
+        </form>
+    }
+    else
+    {
+        <p class="text-muted">No pending orders.</p>
+    }
+
+    <h4 class="mt-5">Approved Orders</h4>
+    @if (Model.ApprovedOrders != null && Model.ApprovedOrders.Any())
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Order Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model.ApprovedOrders)
+                {
+                    <tr>
+                        <td>@order.Customer.CustomerName</td>
+                        <td>@order.Product.ProductName</td>
+                        <td>@order.Quantity</td>
+                        <td>@order.TotalPrice</td>
+                        <td>@order.OrderDate?.ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>@order.OrderStatus</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="text-muted">No approved orders.</p>
+    }
+</div>
+<h4 class="mt-5">Rejected Orders</h4>
+@if (Model.RejectedOrders != null && Model.RejectedOrders.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Order Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.RejectedOrders)
+            {
+                <tr>
+                    <td>@order.Customer.CustomerName</td>
+                    <td>@order.Product.ProductName</td>
+                    <td>@order.Quantity</td>
+                    <td>@order.TotalPrice</td>
+                    <td>@order.OrderDate?.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>
+                        <span class="badge badge-danger">@order.OrderStatus</span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted">No rejected orders.</p>
+}
+
+<style>
+    .badge-danger {
+        background-color: #dc3545;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .badge-success {
+        background-color: #28a745;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .badge-warning {
+        background-color: #ffc107;
+        color: black;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    table.table {
+        margin-top: 20px;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+        text-align: center;
+    }
+</style>

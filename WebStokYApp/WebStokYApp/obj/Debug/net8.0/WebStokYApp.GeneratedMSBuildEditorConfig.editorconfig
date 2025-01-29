@@ -1,0 +1,95 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WebStokYApp
+build_property.RootNamespace = WebStokYApp
+build_property.ProjectDir = C:\Users\icllm\Desktop\WebYazlab_yeni (2)\WebYazlab_yeni\WebYazlab_yeni\Web Yazlab\WebStokYApp\WebStokYApp\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = C:\Users\icllm\Desktop\WebYazlab_yeni (2)\WebYazlab_yeni\WebYazlab_yeni\Web Yazlab\WebStokYApp\WebStokYApp
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Admin/AddProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Admin/AdminSideBar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5TaWRlQmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Admin/ApproveOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQXBwcm92ZU9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Admin/CustomerAndProductList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3VzdG9tZXJBbmRQcm9kdWN0TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Admin/LoginAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW5BZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Admin/OrderStatusDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT3JkZXJTdGF0dXNEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Admin/StockDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU3RvY2tEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Cart/AddToCart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxBZGRUb0NhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Cart/OrderSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxPcmRlclN1bW1hcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Cart/PendingOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxQZW5kaW5nT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Customer/LoginCustomer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcTG9naW5DdXN0b21lci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Home/AdminLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbkxvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Home/CustomerLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDdXN0b21lckxvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Log/LogPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nXExvZ1BhbmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/icllm/Desktop/WebYazlab_yeni (2)/WebYazlab_yeni/WebYazlab_yeni/Web Yazlab/WebStokYApp/WebStokYApp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-hn6cs3z8yq
